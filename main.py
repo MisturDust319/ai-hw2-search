@@ -16,7 +16,7 @@ class State:
 
     def print_path(self):
         # print the parent's data before this data
-        if(self.parent):
+        if self.parent:
             self.parent.print_path()
         # print this node's data
         self.print_data()
@@ -53,11 +53,9 @@ def actions(state):
 def is_in(item,things):
     return any((item.compare(athing)) for athing in things)
 
-def breadth_first_search():
-    node = State(np.array([3,3,1]))
-    # starting value
-    goal = State(np.array([0,0,0]))
-    # ending value
+def breadth_first_search(start, goal, actions):
+    # first init node to start
+    node = start
     frontier = collections.deque([node])
     # next left to explore
     explored = []
@@ -115,11 +113,14 @@ def breadth_first_search():
 
                         return True
                 else:
-                    # only append if not a goal state
+                    # only append new state to frontier if not a goal state
                     # a solution derived from a goal state would be redundant
-                    # and at best, would be a deeper, less efficient solution
+                    # and even if followed, would be a deeper, less efficient solution
                     frontier.append(newstate)
 
-
-print(breadth_first_search())
+start = State(np.array([3,3,1]))
+# starting value
+end = State(np.array([0,0,0]))
+# ending value
+print(breadth_first_search(start, end, actions))
 
