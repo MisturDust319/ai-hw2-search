@@ -6,7 +6,9 @@ start = State(np.array([3,3,1]))
 # starting value
 end = State(np.array([0,0,0]))
 # ending value
+print("#####################################################################################################################")
 print("Test Search")
+print("#####################################################################################################################")
 print(breadth_first_search(start, end, actions))
 
 # MISSIONARIES & CANNIBALS
@@ -39,5 +41,17 @@ end_payload["right_bank"]["cannibals"] = 3
 # use the dictionary to create the ending state
 end_node = MissionariesCannibalsState(end_payload, None)
 
+print("#####################################################################################################################")
 print("Missionaries and Cannibals")
-print(breadth_first_search(start_node, end_node, actions_missionaries_cannibals))
+print("#####################################################################################################################")
+print("Capacity 2:")
+print("#####################################################################################################################")
+# generate a callback for a two person boat
+solution_capacity_two = actions_missionaries_cannibals_factory()
+print(breadth_first_search(start_node, end_node, solution_capacity_two))
+
+print("#####################################################################################################################")
+print("Capacity 3:")
+solution_capacity_three = actions_missionaries_cannibals_factory(3)
+print(breadth_first_search(start_node, end_node, solution_capacity_three))
+print("#####################################################################################################################")
