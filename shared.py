@@ -146,7 +146,7 @@ def breadth_first_search(start, goal, actions):
                     # and even if followed, would be a deeper, less efficient solution
                     frontier.append(newstate)
 
-def actions(state):
+def test_actions(state):
     """
     a test action function for the breadth first search
     also a template for making such functions
